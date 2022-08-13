@@ -1,0 +1,18 @@
+
+Observabilidae
+-------------------------
+
+O código está correto. Existe uma forma mais direta de saber se um astro está na janela de observação do telescópio, sem recorrer à observação gráfica. Basta que faça a trajetória diária dele (como você fez), e em seguida verificar se em algum momento do dia ele passará na região observável. Na realidade, como o Uirapuru tem az~0, pode-se utilizar a equação de culminação que determina a elevação de um astro quando o mesmo culmina:
+h = 90 - abs(lon_local-dec_astro)
+
+
+Analema
+--------------------------
+
+Obs. geral: o código está bem feito, falta apenas automatizar as operações para facilitar a inclusão de uma nova localização caso desejado. O desenho do analema não deu certo pois a função linspace do numpy inclui o número final, entãoa o fazer np.linspace(0,365,365), o código não produz intervalos de 1 dia, e sim intervalos um pouco menores. O correto seria fazer np.linspace(0,365,366).
+
+1 - Usar laço for para fazer as localizações
+
+2 - Poderia definir um unico horario local (ex.: 12:00) e subtrair o fuso-horario para ter o tempo em UTC de forma mais automatizada.
+
+3 - Sugiro usar o scatter ao invés do plot pois o plot liga os pontos, e o scatter faz apenas as marcações
